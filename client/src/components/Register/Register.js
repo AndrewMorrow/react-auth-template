@@ -4,59 +4,104 @@ import { Link } from "react-router-dom";
 const Register = () => {
     return (
         <main>
-            <div className="flex items-start min-h-screen bg-white dark:bg-primary-dark lg:items-center">
-                <div className="container mx-auto">
-                    <Link to="/login" className="text-primary-light">
-                        Login
-                    </Link>
-                    <div className="p-5 ">
-                        <div className="text-center mb-5">
-                            <h1 className="font-semibold text-3xl my-2 text-primary-light">
-                                Register Here
-                            </h1>
-                            <p className="text-secondary">
-                                Sign up for a new account here
-                            </p>
-                        </div>
-                        <div className="flex justify-center">
-                            <div className="flex justify-around flex-wrap  w-3/4 md:px-28 xl:px-36">
-                                <div className="mb-4 ">
-                                    <form action="">
-                                        <div>
-                                            <label
-                                                for="firstName"
-                                                className="text-secondary-light"
-                                            >
-                                                First Name
-                                            </label>
-                                            <input
-                                                type="input"
-                                                name="firstName"
-                                                placeholder="Ex. John"
-                                                className="w-full py-2 px-3"
-                                            />
-                                        </div>
-                                    </form>
-                                </div>
+            <div className="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
+                <div
+                    className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden mx-10"
+                    style={{ "max-width": "1000px" }}
+                >
+                    <div className="md:flex w-full">
+                        <div className="w-full  py-10 px-5 md:px-10">
+                            <div className="text-center mb-10">
+                                <h1 className="font-bold text-3xl text-gray-900">
+                                    REGISTER
+                                </h1>
+                                <p>Enter your information to register</p>
+                            </div>
 
-                                <div className="mb-4">
-                                    <form action="">
-                                        <div className="mb-6">
-                                            <label
-                                                for="lastName"
-                                                className="text-secondary-light"
-                                            >
-                                                Last Name
-                                            </label>
-                                            <input
-                                                type="input"
-                                                name="firstName"
-                                                placeholder="Ex. Doe"
-                                                className="w-full py-2 px-3"
-                                            />
-                                        </div>
-                                    </form>
+                            <div className="flex -mx-3">
+                                <div className="w-1/2 px-3 mb-5">
+                                    <label
+                                        for=""
+                                        className="text-xs font-semibold px-1"
+                                    >
+                                        First name
+                                    </label>
+                                    <div className="flex">
+                                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"></div>
+                                        <input
+                                            type="text"
+                                            className="w-full -ml-10 pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                            placeholder="John"
+                                        />
+                                    </div>
                                 </div>
+                                <div className="w-1/2 px-3 mb-5">
+                                    <label
+                                        for=""
+                                        className="text-xs font-semibold px-1"
+                                    >
+                                        Last name
+                                    </label>
+                                    <div className="flex">
+                                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"></div>
+                                        <input
+                                            type="text"
+                                            className="w-full -ml-10 pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                            placeholder="Smith"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex -mx-3">
+                                <div className="w-full px-3 mb-5">
+                                    <label
+                                        for=""
+                                        className="text-xs font-semibold px-1"
+                                    >
+                                        Email
+                                    </label>
+                                    <div className="flex">
+                                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"></div>
+                                        <input
+                                            type="email"
+                                            className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                            placeholder="johnsmith@example.com"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex -mx-3">
+                                <div className="w-full px-3 mb-12">
+                                    <label
+                                        for=""
+                                        className="text-xs font-semibold px-1"
+                                    >
+                                        Password
+                                    </label>
+                                    <div className="flex">
+                                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"></div>
+                                        <input
+                                            type="password"
+                                            className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                            placeholder="************"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex -mx-3">
+                                <div className="w-full px-3 mb-5">
+                                    <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
+                                        REGISTER NOW
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="text-center">
+                                <p>
+                                    Already have an account?{" "}
+                                    <a href="/login" className="text-blue-500">
+                                        Login Here
+                                    </a>
+                                </p>
                             </div>
                         </div>
                     </div>
