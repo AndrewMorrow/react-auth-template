@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <main>
       <div className="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
         <div
           className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden mx-10"
-          style={{ "max-width": "1000px" }}
+          style={{ "max-width": "900px" }}
         >
           <div className="md:flex w-full">
             <div className="w-full  py-10 px-5 md:px-10">
@@ -64,13 +67,23 @@ const Register = () => {
                   <label for="" className="text-xs font-semibold px-1">
                     Password
                   </label>
-                  <div className="flex">
+                  <div className="flex relative">
                     <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"></div>
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="************"
                     />
+                    <i
+                      className="absolute bottom-3.5 right-4 hover:cursor-pointer"
+                      onClick={() =>
+                        showPassword
+                          ? setShowPassword(false)
+                          : setShowPassword(true)
+                      }
+                    >
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </i>
                   </div>
                 </div>
               </div>
