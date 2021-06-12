@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaRegUser } from "react-icons/fa";
+import { FiMail } from "react-icons/fi";
+import { VscKey } from "react-icons/vsc";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,19 +25,24 @@ const Login = () => {
             </div>
             <div className="m-7">
               <form action="">
-                <div className="mb-6">
+                <div className="mb-6 relative">
                   <label
                     for="email"
                     className="block mb-2 text-sm text-gray-600 dark:text-gray-400"
                   >
                     Email Address
                   </label>
+
+                  <i className="absolute bottom-3.5 left-3 ">
+                    <FaRegUser />
+                  </i>
+
                   <input
                     type="email"
                     name="email"
                     id="email"
                     placeholder="example@domain.com"
-                    className="w-full px-3 py-2 placeholder-gray-300 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
+                    className="w-full px-8 py-2 placeholder-gray-300 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
                   />
                 </div>
                 <div className="mb-6 relative">
@@ -53,12 +60,15 @@ const Login = () => {
                       Forgot password?
                     </a>
                   </div>
+                  <i className="absolute bottom-3.5 left-3 ">
+                    <VscKey />
+                  </i>
                   <input
                     type={showPassword ? "text" : "password"}
                     name="password"
                     id="password"
                     placeholder="Your Password"
-                    className="w-full px-3 py-2 placeholder-gray-300 border-2 border-gray-300 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
+                    className="w-full px-8 py-2 placeholder-gray-300 border-2 border-gray-300 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
                   />
                   <i
                     className="absolute bottom-3.5 right-4 hover:cursor-pointer"

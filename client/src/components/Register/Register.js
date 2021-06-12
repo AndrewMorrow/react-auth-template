@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaRegUser } from "react-icons/fa";
+import { FiMail } from "react-icons/fi";
+import { VscKey } from "react-icons/vsc";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,10 +27,14 @@ const Register = () => {
                     First name
                   </label>
                   <div className="flex">
-                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"></div>
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i>
+                        <FaRegUser />
+                      </i>
+                    </div>
                     <input
                       type="text"
-                      className="w-full -ml-10 pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="John"
                     />
                   </div>
@@ -38,10 +44,14 @@ const Register = () => {
                     Last name
                   </label>
                   <div className="flex">
-                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"></div>
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i>
+                        <FaRegUser />
+                      </i>
+                    </div>
                     <input
                       type="text"
-                      className="w-full -ml-10 pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="Smith"
                     />
                   </div>
@@ -53,7 +63,11 @@ const Register = () => {
                     Email
                   </label>
                   <div className="flex">
-                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"></div>
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i>
+                        <FiMail />
+                      </i>
+                    </div>
                     <input
                       type="email"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
@@ -68,7 +82,11 @@ const Register = () => {
                     Password
                   </label>
                   <div className="flex relative">
-                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"></div>
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i>
+                        <VscKey />
+                      </i>
+                    </div>
                     <input
                       type={showPassword ? "text" : "password"}
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
