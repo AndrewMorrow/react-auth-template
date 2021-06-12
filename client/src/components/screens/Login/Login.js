@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaEye, FaEyeSlash, FaRegUser } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { VscKey } from "react-icons/vsc";
 
@@ -34,7 +34,7 @@ const Login = () => {
                   </label>
 
                   <i className="absolute bottom-3.5 left-3 ">
-                    <FaRegUser />
+                    <FiMail />
                   </i>
 
                   <input
