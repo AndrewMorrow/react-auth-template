@@ -27,10 +27,7 @@ const Login = (props) => {
         dispatch(
             setErrors({
                 response: {
-                    data: {
-                        email: "Please enter a valid Email",
-                        password1: "Please enter a valid password",
-                    },
+                    data: {},
                 },
             })
         );

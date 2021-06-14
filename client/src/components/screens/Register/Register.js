@@ -32,13 +32,7 @@ const Register = (props) => {
         dispatch(
             setErrors({
                 response: {
-                    data: {
-                        firstName: "Please enter a valid first name",
-                        lastName: "Please enter a valid last name",
-                        email: "Please enter a valid Email",
-                        password1: "Please enter a valid password",
-                        password2: "Passwords do not match",
-                    },
+                    data: {},
                 },
             })
         );
@@ -51,18 +45,18 @@ const Register = (props) => {
             password2: password2Ref.current.value,
         };
         // console.log({ userData });
-        // dispatch(registerUser(userData, props.history));
+        dispatch(registerUser(userData, props.history));
     };
 
     return (
         <main>
             <div className="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
                 <div
-                    className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden md:mx-10"
+                    className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden sm:mx-10"
                     style={{ maxWidth: "900px" }}
                 >
                     <form onSubmit={onSubmit}>
-                        <div className="md:flex w-full">
+                        <div className="sm:flex w-full">
                             <div className="w-full  py-10 px-5 md:px-10">
                                 <div className="text-center mb-10">
                                     <h1 className="font-bold text-3xl text-gray-900">
@@ -70,8 +64,8 @@ const Register = (props) => {
                                     </h1>
                                     <p>Enter your information to register</p>
                                 </div>
-                                <div className="md:flex -mx-3">
-                                    <div className="w-full md:w-1/2 px-3 mb-7">
+                                <div className="sm:flex -mx-3">
+                                    <div className="w-full sm:w-1/2 px-3 mb-7">
                                         <label
                                             htmlFor="firstName"
                                             className="text-xs font-semibold px-1"
@@ -102,7 +96,7 @@ const Register = (props) => {
                                             )}
                                         </div>
                                     </div>
-                                    <div className="w-full md:w-1/2 px-3 mb-7 relative">
+                                    <div className="w-full sm:w-1/2 px-3 mb-7 relative">
                                         <label
                                             htmlFor=""
                                             className="text-xs font-semibold px-1"
