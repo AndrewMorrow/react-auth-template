@@ -77,11 +77,11 @@ const Login = (props) => {
                     placeholder="example@domain.com"
                     className="w-full px-8 py-2 mb-0.5 placeholder-gray-300 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
                   />
-                  {!errors.email ? (
+                  {!errors.errors || !errors.errors.email ? (
                     <span></span>
                   ) : (
                     <span className="absolute left-0 -bottom-6">
-                      <Message variant="error">{errors.email}</Message>
+                      <Message variant="error">{errors.errors.email}</Message>
                     </span>
                   )}
                 </div>
@@ -112,11 +112,13 @@ const Login = (props) => {
                     placeholder="Your Password"
                     className="w-full px-8 py-2 mb-0.5 placeholder-gray-300 border-2 border-gray-300 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
                   />
-                  {!errors.password1 ? (
+                  {!errors.errors || !errors.errors.password ? (
                     <span></span>
                   ) : (
                     <span className="absolute left-0 -bottom-6">
-                      <Message variant="error">{errors.password1}</Message>
+                      <Message variant="error">
+                        {errors.errors.password}
+                      </Message>
                     </span>
                   )}
                   <i
