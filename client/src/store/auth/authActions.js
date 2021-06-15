@@ -24,3 +24,18 @@ export const registerUser = (userData, history) => (dispatch) => {
     .then((res) => history.push("/login"))
     .catch((err) => dispatch(setErrors(err)));
 };
+
+export const loginUser = (userData, history) => dispatch => {
+  dispatch(setErrors({ response: { data: {} } }));
+
+  axios.post('/api/auth/login', userData).then(res => {
+    const { token } = res.data;
+
+    localStorage.setItem('jwtToken', token);
+    setAuthToken(token);
+
+    const decoded = jwt_decode(token);
+    dispatch(setCurrentUser(decoded));
+    history.push('/');
+  }).catch(err => dispatch(setErrors(err)));
+};
