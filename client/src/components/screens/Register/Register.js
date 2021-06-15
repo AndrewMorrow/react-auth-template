@@ -13,7 +13,7 @@ const Register = (props) => {
   const state = useSelector((state) => state);
   const { auth } = state;
   const errors = auth.error;
-  // console.log(errors);
+  console.log(errors);
   // const errors = useSelector((state) => (state.error ? state.error : {}));
   const firstNameRef = useRef();
   const lastNameRef = useRef();
@@ -82,11 +82,13 @@ const Register = (props) => {
                         className="w-full -ml-10 pl-10 pr-3 py-2 mb-0.5 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="John"
                       />
-                      {!errors.firstName ? (
+                      {!errors.errors || !errors.errors.firstName ? (
                         <span></span>
                       ) : (
                         <span className="absolute -bottom-6">
-                          <Message variant="error">{errors.firstName}</Message>
+                          <Message variant="error">
+                            {errors.errors.firstName}
+                          </Message>
                         </span>
                       )}
                     </div>
@@ -109,11 +111,13 @@ const Register = (props) => {
                         className="w-full -ml-10 pl-10 pr-3 py-2 mb-0.5 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="Smith"
                       />
-                      {!errors.lastName ? (
+                      {!errors.errors || !errors.errors.lastName ? (
                         <span></span>
                       ) : (
                         <span className="absolute -bottom-6">
-                          <Message variant="error">{errors.lastName}</Message>
+                          <Message variant="error">
+                            {errors.errors.lastName}
+                          </Message>
                         </span>
                       )}
                     </div>
@@ -139,11 +143,13 @@ const Register = (props) => {
                         className="w-full -ml-10 pl-10 pr-3 py-2 mb-0.5 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="johnsmith@example.com"
                       />
-                      {!errors.email ? (
+                      {!errors.errors || !errors.errors.email ? (
                         <span></span>
                       ) : (
                         <span className="absolute -bottom-6">
-                          <Message variant="error">{errors.email}</Message>
+                          <Message variant="error">
+                            {errors.errors.email}
+                          </Message>
                         </span>
                       )}
                     </div>
@@ -172,11 +178,13 @@ const Register = (props) => {
                         className="w-full -ml-10 pl-10 pr-3 py-2 mb-0.5 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />
-                      {!errors.password1 ? (
+                      {!errors.errors || !errors.errors.password ? (
                         <span></span>
                       ) : (
                         <span className="absolute -bottom-6">
-                          <Message variant="error">{errors.password1}</Message>
+                          <Message variant="error">
+                            {errors.errors.password}
+                          </Message>
                         </span>
                       )}
                       <i
@@ -213,11 +221,13 @@ const Register = (props) => {
                         className="w-full -ml-10 pl-10 pr-3 py-2 mb-0.5 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />
-                      {!errors.password2 ? (
+                      {!errors.errors || !errors.errors.password2 ? (
                         <span></span>
                       ) : (
                         <span className="absolute -bottom-6">
-                          <Message variant="error">{errors.password2}</Message>
+                          <Message variant="error">
+                            {errors.errors.password2}
+                          </Message>
                         </span>
                       )}
                       <i

@@ -11,6 +11,7 @@ export const setCurrentUser = (decoded) => (dispatch) => {
 };
 
 export const setErrors = (err) => (dispatch) => {
+  // console.log(err.response.data);
   dispatch({
     type: GET_ERRORS,
     payload: err.response.data,
@@ -22,7 +23,9 @@ export const registerUser = (userData, history) => (dispatch) => {
   axios
     .post("/api/auth/register", userData)
     .then((res) => history.push("/login"))
-    .catch((err) => dispatch(setErrors(err)));
+    .catch((err) => {
+      dispatch(setErrors(err));
+    });
 };
 
 export const loginUser = (userData, history) => (dispatch) => {
