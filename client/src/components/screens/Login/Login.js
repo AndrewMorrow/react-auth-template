@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, setErrors } from "../../../store/auth/authActions";
+import { loginUser } from "../../../store/auth/authActions";
+import { setErrors } from "../../../store/error/errorActions";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { VscKey } from "react-icons/vsc";
@@ -11,11 +12,10 @@ const Login = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const { auth } = state;
-  const errors = auth.error;
+  const { auth, errors } = state;
   const emailRef = useRef();
   const passwordRef = useRef();
-
+  console.log(errors);
   useEffect(() => {
     if (auth.isAuthenticated) props.history.push("/dashboard");
   }, [auth.isAuthenticated, props]);
@@ -132,6 +132,17 @@ const Login = (props) => {
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </i>
                 </div>
+                {!errors.errors ||
+                errors.errors.error === undefined ||
+                !errors.errors.error ? (
+                  <div></div>
+                ) : (
+                  <div className="text-center">
+                    <Message variant="error" classes="font-medium">
+                      {errors.errors.error}
+                    </Message>
+                  </div>
+                )}
                 <div className="mb-6">
                   <button
                     type="submit"

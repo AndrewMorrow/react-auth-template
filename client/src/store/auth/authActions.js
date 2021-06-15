@@ -1,7 +1,8 @@
 import axios from "axios";
 import setAuthToken from "../../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { GET_ERRORS, SET_CURRENT_USER } from "./authConstants";
+import { SET_CURRENT_USER } from "./authConstants";
+import { setErrors } from "../error/errorActions";
 
 export const setCurrentUser = (decoded) => (dispatch) => {
   dispatch({
@@ -10,13 +11,13 @@ export const setCurrentUser = (decoded) => (dispatch) => {
   });
 };
 
-export const setErrors = (err) => (dispatch) => {
-  // console.log(err.response.data);
-  dispatch({
-    type: GET_ERRORS,
-    payload: err.response.data,
-  });
-};
+// export const setErrors = (err) => (dispatch) => {
+//   // console.log(err.response.data);
+//   dispatch({
+//     type: GET_ERRORS,
+//     payload: err.response.data,
+//   });
+// };
 
 export const registerUser = (userData, history) => (dispatch) => {
   dispatch(setErrors({ response: { data: {} } }));

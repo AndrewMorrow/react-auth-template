@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 // reducer imports
 import { userAuthReducer } from "./auth/authReducers";
+import { errorReducer } from "./error/errorReducers";
 
 // sets up state variables and reducers to modify them
 const reducer = combineReducers({
   // stateVariable : importedReducer
   auth: userAuthReducer,
+  errors: errorReducer,
 });
 
 // setup initial state variables

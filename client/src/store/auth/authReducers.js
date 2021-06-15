@@ -1,5 +1,5 @@
 import _ from "lodash/core";
-import { SET_CURRENT_USER, GET_ERRORS } from "./authConstants";
+import { SET_CURRENT_USER } from "./authConstants";
 
 export const userInitialState = {
   isAuthenticated: false,
@@ -14,11 +14,6 @@ export const userAuthReducer = function (state = userInitialState, action) {
         ...state,
         isAuthenticated: !_.isEmpty(action.payload),
         user: action.payload,
-      };
-
-    case GET_ERRORS:
-      return {
-        error: action.payload,
       };
 
     default:

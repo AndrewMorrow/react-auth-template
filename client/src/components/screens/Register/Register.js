@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser, setErrors } from "../../../store/auth/authActions";
+import { registerUser } from "../../../store/auth/authActions";
+import { setErrors } from "../../../store/error/errorActions";
 import { FaEye, FaEyeSlash, FaRegUser } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { VscKey } from "react-icons/vsc";
@@ -11,10 +12,7 @@ const Register = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const { auth } = state;
-  const errors = auth.error;
-  console.log(errors);
-  // const errors = useSelector((state) => (state.error ? state.error : {}));
+  const { auth, errors } = state;
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const emailRef = useRef();
@@ -43,7 +41,7 @@ const Register = (props) => {
       password: passwordRef.current.value,
       password2: password2Ref.current.value,
     };
-    // console.log({ userData });
+
     dispatch(registerUser(userData, props.history));
   };
 
@@ -139,7 +137,6 @@ const Register = (props) => {
                         ref={emailRef}
                         name="email"
                         autoComplete="username"
-                        // error={errors.email}
                         className="w-full -ml-10 pl-10 pr-3 py-2 mb-0.5 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="johnsmith@example.com"
                       />
@@ -174,11 +171,11 @@ const Register = (props) => {
                         ref={passwordRef}
                         name="password"
                         autoComplete="new-password"
-                        // error={errors.password}
+                        error={errors.errors ? errors.errors.password : ""}
                         className="w-full -ml-10 pl-10 pr-3 py-2 mb-0.5 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />
-                      {!errors.errors || !errors.errors.password ? (
+                      {/* {!errors.errors || !errors.errors.password ? (
                         <span></span>
                       ) : (
                         <span className="absolute -bottom-6">
@@ -186,7 +183,7 @@ const Register = (props) => {
                             {errors.errors.password}
                           </Message>
                         </span>
-                      )}
+                      )} */}
                       <i
                         className="absolute bottom-3.5 right-4 hover:cursor-pointer"
                         onClick={() =>
@@ -243,8 +240,19 @@ const Register = (props) => {
                     </div>
                   </div>
                 </div>
+                {!errors.errors ||
+                errors.errors.error === undefined ||
+                !errors.errors.error ? (
+                  <div></div>
+                ) : (
+                  <div className="text-center mb-6">
+                    <Message variant="error" classes="font-medium">
+                      {errors.errors.error}
+                    </Message>
+                  </div>
+                )}
                 <div className="flex -mx-3">
-                  <div className="w-full px-3 mb-5">
+                  <div className="w-full px-3 mb-5 ">
                     <button
                       type="submit"
                       className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
