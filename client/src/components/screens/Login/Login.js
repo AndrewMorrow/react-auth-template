@@ -22,7 +22,6 @@ const Login = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted");
 
     dispatch(
       setErrors({
@@ -37,7 +36,7 @@ const Login = (props) => {
       password: passwordRef.current.value,
     };
 
-    loginUser(userData, props.history)(dispatch);
+    dispatch(loginUser(userData, props.history));
   };
 
   return (
@@ -108,6 +107,7 @@ const Login = (props) => {
                     type={showPassword ? "text" : "password"}
                     name="password"
                     ref={passwordRef}
+                    autoComplete="current-password"
                     id="password"
                     placeholder="Your Password"
                     className="w-full px-8 py-2 mb-0.5 placeholder-gray-300 border-2 border-gray-300 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
