@@ -4,7 +4,6 @@ import { SET_CURRENT_USER } from "./authConstants";
 export const userInitialState = {
   isAuthenticated: false,
   user: {},
-  error: {},
 };
 
 export const userAuthReducer = function (state = userInitialState, action) {

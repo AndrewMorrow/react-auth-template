@@ -171,11 +171,10 @@ const Register = (props) => {
                         ref={passwordRef}
                         name="password"
                         autoComplete="new-password"
-                        error={errors.errors ? errors.errors.password : ""}
                         className="w-full -ml-10 pl-10 pr-3 py-2 mb-0.5 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />
-                      {/* {!errors.errors || !errors.errors.password ? (
+                      {!errors.errors || !errors.errors.password ? (
                         <span></span>
                       ) : (
                         <span className="absolute -bottom-6">
@@ -183,7 +182,7 @@ const Register = (props) => {
                             {errors.errors.password}
                           </Message>
                         </span>
-                      )} */}
+                      )}
                       <i
                         className="absolute bottom-3.5 right-4 hover:cursor-pointer"
                         onClick={() =>

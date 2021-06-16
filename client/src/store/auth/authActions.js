@@ -11,14 +11,6 @@ export const setCurrentUser = (decoded) => (dispatch) => {
   });
 };
 
-// export const setErrors = (err) => (dispatch) => {
-//   // console.log(err.response.data);
-//   dispatch({
-//     type: GET_ERRORS,
-//     payload: err.response.data,
-//   });
-// };
-
 export const registerUser = (userData, history) => (dispatch) => {
   dispatch(setErrors({ response: { data: {} } }));
   axios
