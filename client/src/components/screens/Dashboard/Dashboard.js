@@ -1,10 +1,12 @@
 import React from "react";
 import { logoutUser } from "../../../store/auth/authActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Dashboard = (props) => {
   const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  console.log(state);
   const onLogout = () => {
     dispatch(logoutUser(props.history));
   };
