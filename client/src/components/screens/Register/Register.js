@@ -6,7 +6,7 @@ import { setErrors } from "../../../store/error/errorActions";
 import { FaEye, FaEyeSlash, FaRegUser } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { VscKey } from "react-icons/vsc";
-import Message from "../../Message";
+import Message from "../../partials/Message";
 
 const Register = (props) => {
   const [showPassword, setShowPassword] = useState(false);
