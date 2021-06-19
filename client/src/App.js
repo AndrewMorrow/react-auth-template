@@ -9,6 +9,7 @@ import Login from "./components/screens/Login/Login";
 import Landing from "./components/screens/Landing/Landing";
 import Dashboard from "./components/screens/Dashboard/Dashboard";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Navbar from "./components/partials/Navbar/Navbar";
 import { logoutUser } from "./store/auth/authActions";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser } from "./store/auth/authActions";
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <Router>
+      <Navbar />
       <Route exact path="/" component={Landing} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />

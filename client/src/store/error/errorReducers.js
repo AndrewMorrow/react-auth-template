@@ -1,6 +1,8 @@
 import { GET_ERRORS } from "./errorConstants";
 
-export const errorInitialState = {};
+export const errorInitialState = {
+  
+};
 
 export const errorReducer = function (state = errorInitialState, action) {
   switch (action.type) {
