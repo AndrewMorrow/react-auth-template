@@ -8,7 +8,9 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <div className="bg-pink-200">
+      <App />
+    </div>
   </Provider>,
   document.getElementById("root")
 );

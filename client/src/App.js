@@ -34,9 +34,9 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Router>
+    <Router >
       <Navbar />
-      <div className="container max-w-5xl xl:max-w-7xl">
+      <div className="container max-w-5xl xl:max-w-7xl ">
         <Route exact path="/" component={Landing} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />

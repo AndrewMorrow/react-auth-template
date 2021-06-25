@@ -40,7 +40,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className=" min-h-screen bg-gray-100 dark:bg-gray-600 flex items-center justify-center ">
+    <div className=" min-h-screen flex items-center justify-center ">
       <div
         className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden mx-2 sm:mx-10.5"
         style={{ maxWidth: "500px" }}
