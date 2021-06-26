@@ -47,9 +47,9 @@ const Register = (props) => {
 
   return (
     <main>
-      <div className="min-w-screen min-h-screen  flex items-center justify-center px-5 py-5">
+      <div className="min-w-screen min-h-screen  flex items-center justify-center md:px-5 py-5">
         <div
-          className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden sm:mx-10"
+          className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden md:mx-4"
           style={{ maxWidth: "900px" }}
         >
           <form onSubmit={onSubmit}>
