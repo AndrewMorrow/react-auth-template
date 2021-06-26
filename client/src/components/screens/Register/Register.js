@@ -19,6 +19,7 @@ const Register = (props) => {
   const passwordRef = useRef();
   const password2Ref = useRef();
 
+  console.log(props);
   useEffect(() => {
     if (auth.isAuthenticated) props.history.push("/dashboard");
   }, [auth.isAuthenticated, props]);

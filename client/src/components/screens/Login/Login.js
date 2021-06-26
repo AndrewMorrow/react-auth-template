@@ -15,7 +15,7 @@ const Login = (props) => {
   const { auth, errors } = state;
   const emailRef = useRef();
   const passwordRef = useRef();
-  console.log(errors);
+  console.log(props);
   useEffect(() => {
     if (auth.isAuthenticated) props.history.push("/dashboard");
   }, [auth.isAuthenticated, props]);

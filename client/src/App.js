@@ -14,7 +14,7 @@ import { logoutUser } from "./store/auth/authActions";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser } from "./store/auth/authActions";
 
-function App() {
+const App = (props) =>{
   const dispatch = useDispatch();
   useEffect(() => {
     if (localStorage.jwtToken) {

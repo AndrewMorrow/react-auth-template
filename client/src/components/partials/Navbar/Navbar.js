@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavUserDropdown from "../NavUserDropdown/NavUserDropdown";
+import NavUserDropdown from "./NavUserDropdown/NavUserDropdown";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  console.log(props);
   return (
     <header>
       <nav className="bg-blue-300 py-4">
@@ -14,7 +15,7 @@ const Navbar = () => {
             <Link to="/register">Register</Link>
             <Link to="#">Link</Link>
             <Link to="#">Link</Link>
-            <NavUserDropdown />
+            <NavUserDropdown props={props} />
           </div>
         </div>
       </nav>
