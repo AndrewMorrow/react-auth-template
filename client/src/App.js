@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import Register from "./components/screens/Register/Register";
 import Login from "./components/screens/Login/Login";
 import Landing from "./components/screens/Landing/Landing";
+import MyAccount from "./components/screens/MyAccount/MyAccount";
 import Dashboard from "./components/screens/Dashboard/Dashboard";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Navbar from "./components/partials/Navbar/Navbar";
@@ -14,7 +15,7 @@ import { logoutUser } from "./store/auth/authActions";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser } from "./store/auth/authActions";
 
-const App = (props) =>{
+const App = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (localStorage.jwtToken) {
@@ -34,19 +35,20 @@ const App = (props) =>{
   }, [dispatch]);
 
   return (
-    <Router >
+    <Router>
       <Navbar />
-      <div className="container max-w-5xl xl:max-w-7xl ">
+      <div className="container max-w-5xl xl:max-w-7xl  ">
         <Route exact path="/" component={Landing} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
 
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/account" component={MyAccount} />
         </Switch>
       </div>
     </Router>
   );
-}
+};
 
 export default App;

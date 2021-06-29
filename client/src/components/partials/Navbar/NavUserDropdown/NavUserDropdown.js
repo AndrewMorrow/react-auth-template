@@ -3,6 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { logoutUser } from "../../../../store/auth/authActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import React from "react";
 
@@ -26,26 +27,26 @@ const NavUserDropdown = (props) => {
       >
         <Menu.Item>
           {({ active }) => (
-            <a
+            <Link
               className={`${
                 active && "bg-blue-200"
               } block p-3 whitespace-nowrap border border-black text-center w-full font-semibold`}
-              href="/account-settings"
+              to="/dashboard"
             >
               Dashboard
-            </a>
+            </Link>
           )}
         </Menu.Item>
         <Menu.Item>
           {({ active }) => (
-            <a
+            <Link
               className={`${
                 active && "bg-blue-200"
               } block whitespace-nowrap p-3 border border-black text-center w-full font-semibold`}
-              href="/account-settings"
+              to="/account"
             >
               My Account
-            </a>
+            </Link>
           )}
         </Menu.Item>
         <Menu.Item>
