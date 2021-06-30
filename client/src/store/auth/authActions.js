@@ -15,10 +15,17 @@ export const registerUser = (userData, history) => (dispatch) => {
   dispatch(setErrors({ response: { data: {} } }));
   axios
     .post("/api/auth/register", userData)
-    .then((res) => history.push("/login"))
-    .catch((err) => {
-      dispatch(setErrors(err));
-    });
+    .then((res) => {
+      const { token } = res.data;
+
+      localStorage.setItem("jwtToken", token);
+      setAuthToken(token);
+
+      const decoded = jwt_decode(token);
+      dispatch(setCurrentUser(decoded));
+      history.push("/dashboard");
+    })
+    .catch((err) => dispatch(setErrors(err)));
 };
 
 export const loginUser = (userData, history) => (dispatch) => {
@@ -34,7 +41,7 @@ export const loginUser = (userData, history) => (dispatch) => {
 
       const decoded = jwt_decode(token);
       dispatch(setCurrentUser(decoded));
-      history.push("/");
+      history.push("/dashboard");
     })
     .catch((err) => dispatch(setErrors(err)));
 };
