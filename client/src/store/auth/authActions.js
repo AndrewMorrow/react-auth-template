@@ -48,3 +48,22 @@ export const logoutUser = (history) => (dispatch) => {
   console.log(history);
   history.push("/");
 };
+
+export const updateUser = (userData, history) => (dispatch) => {
+  dispatch(setErrors({ response: { data: {} } }));
+
+  axios
+    .put("/api/auth/updateUser", userData)
+    .then((res) => {
+      const { token, message } = res.data;
+
+      localStorage.setItem("jwtToken", token);
+      setAuthToken(token);
+
+      const decoded = jwt_decode(token);
+      dispatch(setCurrentUser(decoded));
+      return message;
+      // history.push("/dashboard");
+    })
+    .catch((err) => dispatch(setErrors(err)));
+};

@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../../store/auth/authActions";
 import { setErrors } from "../../../store/error/errorActions";
 import { FaEye, FaEyeSlash, FaRegUser } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { VscKey } from "react-icons/vsc";
 import { BsArrowLeft } from "react-icons/bs";
 import Message from "../../partials/Message";
+import { updateUser } from "../../../store/auth/authActions";
 
 const MyAccount = (props) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -43,8 +43,9 @@ const MyAccount = (props) => {
       password: passwordRef.current.value,
       password2: password2Ref.current.value,
     };
-
-    dispatch(updateUser(userData, props.history));
+    console.log(userData);
+    const message = dispatch(updateUser(userData, props.history));
+    console.log(message);
   };
 
   return (
