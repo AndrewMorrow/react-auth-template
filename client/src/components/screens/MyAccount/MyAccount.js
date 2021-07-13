@@ -8,21 +8,32 @@ import { VscKey } from "react-icons/vsc";
 import { BsArrowLeft } from "react-icons/bs";
 import Message from "../../partials/Message";
 import { updateUser } from "../../../store/auth/authActions";
+import { getUser } from "../../../utils/apiHelpers";
 
 const MyAccount = (props) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { auth, errors } = state;
   console.log(auth);
+
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const password2Ref = useRef();
+  firstNameRef.current.value = currentUser.firstName;
+  lastNameRef.current.value = currentUser.lastName;
+  emailRef.current.value = currentUser.email;
 
   useEffect(() => {
     if (!auth.isAuthenticated) props.history.push("/login");
+    getUser()
+      .then((res) => {
+        setCurrentUser(res.data);
+      })
+      .catch((err) => console.log(err));
   }, [auth.isAuthenticated, props]);
 
   const onSubmit = (e) => {
@@ -266,7 +277,7 @@ const MyAccount = (props) => {
                   </div>
                 )}
                 <div className="flex -mx-3">
-                  <div className="w-full px-3 mb-5 ">
+                  <div className="w-full px-3 mb-3 ">
                     <button
                       type="submit"
                       className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
@@ -274,14 +285,6 @@ const MyAccount = (props) => {
                       SAVE CHANGES
                     </button>
                   </div>
-                </div>
-                <div className="text-center">
-                  <p>
-                    Already have an account?{" "}
-                    <Link to="/login" className="text-blue-500">
-                      Login Here
-                    </Link>
-                  </p>
                 </div>
               </div>
             </div>
