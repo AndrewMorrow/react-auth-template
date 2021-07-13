@@ -3,6 +3,7 @@ import setAuthToken from "../../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { SET_CURRENT_USER } from "./authConstants";
 import { setErrors } from "../error/errorActions";
+import { setMessages } from "../message/messageActions";
 
 export const setCurrentUser = (decoded) => (dispatch) => {
   dispatch({
@@ -71,6 +72,21 @@ export const updateUser = (userData, history) => (dispatch) => {
       dispatch(setCurrentUser(decoded));
       return message;
       // history.push("/dashboard");
+    })
+    .catch((err) => dispatch(setErrors(err)));
+};
+
+export const passUpdate = (userData, history) => (dispatch) => {
+  dispatch(setErrors({ response: { data: {} } }));
+  dispatch(setMessages({}));
+
+  axios
+    .post("/api/auth/requestReset", userData)
+    .then((res) => {
+      const { message } = res.data;
+
+      dispatch(setMessages(message));
+      // history.push("/login");
     })
     .catch((err) => dispatch(setErrors(err)));
 };
