@@ -9,6 +9,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import Message from "../../partials/Message";
 import { updateUser } from "../../../store/auth/authActions";
 import { getUser } from "../../../utils/apiHelpers";
+import _ from "lodash/core";
 
 const MyAccount = (props) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,9 +24,12 @@ const MyAccount = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const password2Ref = useRef();
-  firstNameRef.current.value = currentUser.firstName;
-  lastNameRef.current.value = currentUser.lastName;
-  emailRef.current.value = currentUser.email;
+
+  if (!_.isEmpty(currentUser)) {
+    firstNameRef.current.value = currentUser.firstName;
+    lastNameRef.current.value = currentUser.lastName;
+    emailRef.current.value = currentUser.email;
+  }
 
   useEffect(() => {
     if (!auth.isAuthenticated) props.history.push("/login");
