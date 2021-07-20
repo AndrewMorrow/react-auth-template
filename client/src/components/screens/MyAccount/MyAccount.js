@@ -135,7 +135,6 @@ const MyAccount = (props) => {
                         type="text"
                         ref={lastNameRef}
                         name="lastName"
-                        // error={errors.lastName}
                         className="w-full -ml-10 pl-10 pr-3 py-2 mb-0.5 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="Smith"
                       />
@@ -243,7 +242,6 @@ const MyAccount = (props) => {
                         ref={password2Ref}
                         name="password2"
                         autoComplete="new-password"
-                        // error={errors.password}
                         className="w-full -ml-10 pl-10 pr-3 py-2 mb-0.5 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />

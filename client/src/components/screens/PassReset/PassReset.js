@@ -42,7 +42,7 @@ const PassReset = (props) => {
     <main className=" min-h-screen flex items-center justify-center ">
       <div
         className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden mx-2 sm:mx-10.5"
-        style={{ maxWidth: "500px" }}
+        style={{ maxWidth: "505px" }}
       >
         <div className="container mx-auto">
           <div className="max-w-md mx-auto my-10">

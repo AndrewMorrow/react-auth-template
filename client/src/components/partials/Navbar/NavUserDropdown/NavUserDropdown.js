@@ -10,6 +10,7 @@ import React from "react";
 const NavUserDropdown = (props) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+  const { auth } = state;
   const history = useHistory();
 
   const onLogout = () => {
@@ -50,16 +51,28 @@ const NavUserDropdown = (props) => {
           )}
         </Menu.Item>
         <Menu.Item>
-          {({ active }) => (
-            <button
-              onClick={onLogout}
-              className={`${
-                active && "bg-blue-200"
-              } block whitespace-nowrap p-3 border border-black text-center w-full font-semibold`}
-            >
-              Logout
-            </button>
-          )}
+          {({ active }) =>
+            auth.isAuthenticated ? (
+              <button
+                onClick={onLogout}
+                className={`${
+                  active && "bg-blue-200"
+                } block whitespace-nowrap p-3 border border-black text-center w-full font-semibold`}
+              >
+                Logout
+              </button>
+            ) : (
+              <Link to="/login">
+                <button
+                  className={`${
+                    active && "bg-blue-200"
+                  } block whitespace-nowrap p-3 border border-black text-center w-full font-semibold`}
+                >
+                  Login
+                </button>
+              </Link>
+            )
+          }
         </Menu.Item>
       </Menu.Items>
     </Menu>
