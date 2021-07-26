@@ -16,7 +16,7 @@ const MyAccount = (props) => {
   const [currentUser, setCurrentUser] = useState({});
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const { auth, errors } = state;
+  const { auth, errors, messages } = state;
   console.log(auth);
 
   const firstNameRef = useRef();
@@ -58,9 +58,8 @@ const MyAccount = (props) => {
       password: passwordRef.current.value,
       password2: password2Ref.current.value,
     };
-    console.log(userData);
-    const message = dispatch(updateUser(userData, props.history));
-    console.log(message);
+
+    dispatch(updateUser(userData, props.history));
   };
 
   return (
@@ -276,6 +275,11 @@ const MyAccount = (props) => {
                     <Message variant="error" classes="font-medium">
                       {errors.errors.error}
                     </Message>
+                  </div>
+                )}
+                {!_.isEmpty(messages.message) && (
+                  <div className="text-center mb-6">
+                    <Message variant="success">{messages.message}</Message>
                   </div>
                 )}
                 <div className="flex -mx-3">

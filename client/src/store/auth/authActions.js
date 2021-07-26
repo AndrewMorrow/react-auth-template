@@ -70,7 +70,10 @@ export const updateUser = (userData, history) => (dispatch) => {
 
       const decoded = jwt_decode(token);
       dispatch(setCurrentUser(decoded));
-      return message;
+      dispatch(setMessages(message));
+      setTimeout(() => {
+        dispatch(setMessages({}));
+      }, 2000);
       // history.push("/dashboard");
     })
     .catch((err) => dispatch(setErrors(err)));
@@ -86,6 +89,9 @@ export const passUpdate = (userData, history) => (dispatch) => {
       const { message } = res.data;
 
       dispatch(setMessages(message));
+      setTimeout(() => {
+        dispatch(setMessages({}));
+      }, 3000);
       // history.push("/login");
     })
     .catch((err) => dispatch(setErrors(err)));
