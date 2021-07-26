@@ -6,7 +6,8 @@ import { setErrors } from "../../../store/error/errorActions";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { VscKey } from "react-icons/vsc";
-import Message from "../../partials/Message";
+import Message from "../../partials/Message/Message";
+import _ from "lodash/core";
 
 const Login = (props) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -54,7 +55,7 @@ const Login = (props) => {
     <main className=" min-h-screen flex items-center justify-center ">
       <div
         className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden mx-2 sm:mx-10.5"
-        style={{ maxWidth: "500px" }}
+        style={{ maxWidth: "510px" }}
       >
         <div className="container mx-auto">
           <div className="max-w-md mx-auto my-10">
@@ -88,13 +89,13 @@ const Login = (props) => {
                     placeholder="example@domain.com"
                     className="w-full px-8 py-2 mb-0.5 placeholder-gray-300 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
                   />
-                  {!errors.errors || !errors.errors.email ? (
-                    <span></span>
-                  ) : (
-                    <span className="absolute left-0 -bottom-6">
-                      <Message variant="error">{errors.errors.email}</Message>
-                    </span>
-                  )}
+
+                  {!_.isEmpty(errors.errors) &&
+                    !_.isEmpty(errors.errors.email) && (
+                      <span className="absolute left-0 -bottom-6">
+                        <Message variant="error">{errors.errors.email}</Message>
+                      </span>
+                    )}
                 </div>
                 <div className="mb-6 relative my-8">
                   <div className="flex justify-between mb-2">
@@ -123,7 +124,16 @@ const Login = (props) => {
                     placeholder="Your Password"
                     className="w-full px-8 py-2 mb-0.5 placeholder-gray-300 border-2 border-gray-300 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
                   />
-                  {!errors.errors || !errors.errors.password ? (
+
+                  {!_.isEmpty(errors.errors) &&
+                    !_.isEmpty(errors.errors.password) && (
+                      <span className="absolute left-0 -bottom-6">
+                        <Message variant="error">
+                          {errors.errors.password}
+                        </Message>
+                      </span>
+                    )}
+                  {/* {!errors.errors || !errors.errors.password ? (
                     <span></span>
                   ) : (
                     <span className="absolute left-0 -bottom-6">
@@ -131,7 +141,7 @@ const Login = (props) => {
                         {errors.errors.password}
                       </Message>
                     </span>
-                  )}
+                  )} */}
                   <i
                     className="absolute bottom-3.5 right-4 hover:cursor-pointer"
                     onClick={() =>
@@ -143,7 +153,15 @@ const Login = (props) => {
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </i>
                 </div>
-                {!errors.errors ||
+
+                {!_.isEmpty(errors.errors) && !_.isEmpty(errors.errors.error) && (
+                  <div className="text-center">
+                  <Message variant="error" classes="font-medium">
+                    {errors.errors.error}
+                  </Message>
+                </div>
+                )}
+                {/* {!errors.errors ||
                 errors.errors.error === undefined ||
                 !errors.errors.error ? (
                   <div></div>
@@ -153,7 +171,7 @@ const Login = (props) => {
                       {errors.errors.error}
                     </Message>
                   </div>
-                )}
+                )} */}
                 <div className="mb-6">
                   <button
                     type="submit"

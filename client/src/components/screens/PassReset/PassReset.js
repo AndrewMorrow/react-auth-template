@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { passUpdate } from "../../../store/auth/authActions";
 import { setErrors } from "../../../store/error/errorActions";
 import { FiMail } from "react-icons/fi";
-import Message from "../../partials/Message";
+import Message from "../../partials/Message/Message";
 import _ from "lodash/core";
 
 const PassReset = (props) => {
@@ -76,17 +76,24 @@ const PassReset = (props) => {
                     placeholder="example@domain.com"
                     className="w-full px-8 py-2 mb-0.5 placeholder-gray-300 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
                   />
-                  {!errors.errors || !errors.errors.email ? (
+
+                  {!_.isEmpty(errors.errors) &&
+                    !_.isEmpty(errors.errors.email) && (
+                      <span className="absolute left-0 -bottom-6">
+                        <Message variant="error">{errors.errors.email}</Message>
+                      </span>
+                    )}
+                  {/* {!errors.errors || !errors.errors.email ? (
                     <span></span>
                   ) : (
                     <span className="absolute left-0 -bottom-6">
                       <Message variant="error">{errors.errors.email}</Message>
                     </span>
-                  )}
+                  )} */}
                 </div>
 
                 {!_.isEmpty(messages.message) && (
-                  <span>
+                  <span className="absolute left-0 -bottom-6">
                     <Message variant="success">{messages.message}</Message>
                   </span>
                 )}
