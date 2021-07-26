@@ -40,6 +40,17 @@ const MyAccount = (props) => {
       .catch((err) => console.log(err));
   }, [auth.isAuthenticated, props]);
 
+  useEffect(() => {
+    dispatch(
+      setErrors({
+        response: {
+          data: {},
+        },
+      })
+    );
+    //eslint-disable-next-line
+  }, []);
+
   const onSubmit = (e) => {
     e.preventDefault();
 

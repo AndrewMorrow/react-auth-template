@@ -73,7 +73,7 @@ export const updateUser = (userData, history) => (dispatch) => {
       dispatch(setMessages(message));
       setTimeout(() => {
         dispatch(setMessages({}));
-      }, 2000);
+      }, 2500);
       // history.push("/dashboard");
     })
     .catch((err) => dispatch(setErrors(err)));
