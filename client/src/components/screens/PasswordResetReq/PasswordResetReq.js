@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { passUpdate } from "../../../store/auth/authActions";
@@ -7,17 +7,13 @@ import { FiMail } from "react-icons/fi";
 import Message from "../../partials/Message/Message";
 import _ from "lodash/core";
 
-const PassReset = (props) => {
+const PasswordReset = (props) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const { auth, errors, messages } = state;
+  const { errors, messages } = state;
   const emailRef = useRef();
 
   // console.log(props);
-
-  useEffect(() => {
-    if (auth.isAuthenticated) props.history.push("/dashboard");
-  }, [auth.isAuthenticated, props]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -48,7 +44,7 @@ const PassReset = (props) => {
           <div className="max-w-md mx-auto my-10">
             <div className="text-center">
               <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-900">
-                Password Reset
+                Password Reset Request
               </h1>
               <p className="text-gray-500 dark:text-gray-500">
                 Please enter your email to reset your password
@@ -133,4 +129,4 @@ const PassReset = (props) => {
   );
 };
 
-export default PassReset;
+export default PasswordReset;

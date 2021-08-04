@@ -96,3 +96,21 @@ export const passUpdate = (userData, history) => (dispatch) => {
     })
     .catch((err) => dispatch(setErrors(err)));
 };
+
+export const passwordReset = (userData, history) => (dispatch) => {
+  dispatch(setErrors({ response: { data: {} } }));
+  dispatch(setMessages({}));
+
+  axios
+    .post("/api/auth/resetPassword", userData)
+    .then((res) => {
+      const { message } = res.data;
+
+      dispatch(setMessages(message));
+      setTimeout(() => {
+        dispatch(setMessages({}));
+        // history.push("/login");
+      }, 3000);
+    })
+    .catch((err) => dispatch(setErrors(err)));
+};

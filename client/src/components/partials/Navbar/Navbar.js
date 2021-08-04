@@ -13,7 +13,7 @@ const Navbar = (props) => {
           </Link>
           <div className=" flex items-center space-x-6 md:space-x-10">
             <Link to="/register">Register</Link>
-            <Link to="/passReset">Password Reset</Link>
+            <Link to="/passwordResetReq">Password Reset</Link>
             <Link to="#">Link</Link>
             <NavUserDropdown props={props} />
           </div>
