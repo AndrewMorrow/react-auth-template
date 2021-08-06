@@ -168,9 +168,9 @@ const PasswordReset = (props) => {
                 </div>
 
                 {!_.isEmpty(messages.message) && (
-                  <span className="absolute left-0 -bottom-6">
+                  <div className="text-center mb-6">
                     <Message variant="success">{messages.message}</Message>
-                  </span>
+                  </div>
                 )}
 
                 {/* {!messages.message ? (

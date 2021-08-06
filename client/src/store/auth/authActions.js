@@ -79,7 +79,7 @@ export const updateUser = (userData, history) => (dispatch) => {
     .catch((err) => dispatch(setErrors(err)));
 };
 
-export const passUpdate = (userData, history) => (dispatch) => {
+export const passResetReq = (userData, history) => (dispatch) => {
   dispatch(setErrors({ response: { data: {} } }));
   dispatch(setMessages({}));
 
@@ -89,9 +89,9 @@ export const passUpdate = (userData, history) => (dispatch) => {
       const { message } = res.data;
 
       dispatch(setMessages(message));
-      setTimeout(() => {
-        dispatch(setMessages({}));
-      }, 3000);
+      // setTimeout(() => {
+      //   dispatch(setMessages({}));
+      // }, 3000);
       // history.push("/login");
     })
     .catch((err) => dispatch(setErrors(err)));
@@ -109,8 +109,8 @@ export const passwordReset = (userData, history) => (dispatch) => {
       dispatch(setMessages(message));
       setTimeout(() => {
         dispatch(setMessages({}));
-        // history.push("/login");
-      }, 3000);
+        history.push("/login");
+      }, 2000);
     })
     .catch((err) => dispatch(setErrors(err)));
 };

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { passUpdate } from "../../../store/auth/authActions";
+import { passResetReq } from "../../../store/auth/authActions";
 import { setErrors } from "../../../store/error/errorActions";
 import { FiMail } from "react-icons/fi";
 import Message from "../../partials/Message/Message";
@@ -13,7 +13,7 @@ const PasswordReset = (props) => {
   const { errors, messages } = state;
   const emailRef = useRef();
 
-  // console.log(props);
+  console.log(messages);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ const PasswordReset = (props) => {
       email: emailRef.current.value,
     };
 
-    dispatch(passUpdate(userData, props.history));
+    dispatch(passResetReq(userData, props.history));
     // console.log(messages.message);
   };
 
@@ -89,7 +89,7 @@ const PasswordReset = (props) => {
                 </div>
 
                 {!_.isEmpty(messages.message) && (
-                  <span className="absolute left-0 -bottom-6">
+                  <span className="text-center mb-6">
                     <Message variant="success">{messages.message}</Message>
                   </span>
                 )}
