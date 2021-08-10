@@ -16,10 +16,13 @@ const PasswordReset = (props) => {
   const passwordRef = useRef();
   const password2Ref = useRef();
 
+  // pulls password reset token from url
   const token = new URLSearchParams(props.location.search).get("token");
 
+  // pulls userId from url
   const userId = new URLSearchParams(props.location.search).get("id");
 
+  // dispatch passwordReset on form submit
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -39,7 +42,6 @@ const PasswordReset = (props) => {
     };
 
     dispatch(passwordReset(userData, props.history));
-    // console.log(messages.message);
   };
 
   return (
@@ -92,15 +94,6 @@ const PasswordReset = (props) => {
                           </span>
                         )}
 
-                      {/* {!errors.errors || !errors.errors.password ? (
-                        <span></span>
-                      ) : (
-                        <span className="absolute -bottom-6">
-                          <Message variant="error">
-                            {errors.errors.password}
-                          </Message>
-                        </span>
-                      )} */}
                       <i
                         className="absolute bottom-3.5 right-4 hover:cursor-pointer"
                         onClick={() =>
@@ -131,7 +124,6 @@ const PasswordReset = (props) => {
                         ref={password2Ref}
                         name="password2"
                         autoComplete="new-password"
-                        // error={errors.password}
                         className="w-full -ml-10 pl-10 pr-3 py-2 mb-0.5 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />
@@ -144,15 +136,7 @@ const PasswordReset = (props) => {
                             </Message>
                           </span>
                         )}
-                      {/* {!errors.errors || !errors.errors.password2 ? (
-                        <span></span>
-                      ) : (
-                        <span className="absolute -bottom-6">
-                          <Message variant="error">
-                            {errors.errors.password2}
-                          </Message>
-                        </span>
-                      )} */}
+
                       <i
                         className="absolute bottom-3.5 right-4 hover:cursor-pointer"
                         onClick={() =>
@@ -172,14 +156,6 @@ const PasswordReset = (props) => {
                     <Message variant="success">{messages.message}</Message>
                   </div>
                 )}
-
-                {/* {!messages.message ? (
-                  <span></span>
-                ) : (
-                  <span className="absolute left-0 -bottom-6">
-                    <Message variant="success">{messages.message}</Message>
-                  </span>
-                )} */}
 
                 <div className="mb-6">
                   <button

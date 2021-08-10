@@ -17,7 +17,6 @@ const MyAccount = (props) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { auth, errors, messages } = state;
-  console.log(auth);
 
   const firstNameRef = useRef();
   const lastNameRef = useRef();
@@ -129,15 +128,6 @@ const MyAccount = (props) => {
                             </Message>
                           </span>
                         )}
-                      {/* {!errors.errors || !errors.errors.firstName ? (
-                        <span></span>
-                      ) : (
-                        <span className="absolute -bottom-6">
-                          <Message variant="error">
-                            {errors.errors.firstName}
-                          </Message>
-                        </span>
-                      )} */}
                     </div>
                   </div>
                   <div className="w-full sm:w-1/2 px-3 mb-7 relative">
@@ -166,15 +156,6 @@ const MyAccount = (props) => {
                             </Message>
                           </span>
                         )}
-                      {/* {!errors.errors || !errors.errors.lastName ? (
-                        <span></span>
-                      ) : (
-                        <span className="absolute -bottom-6">
-                          <Message variant="error">
-                            {errors.errors.lastName}
-                          </Message>
-                        </span>
-                      )} */}
                     </div>
                   </div>
                 </div>
@@ -206,15 +187,6 @@ const MyAccount = (props) => {
                             </Message>
                           </span>
                         )}
-                      {/* {!errors.errors || !errors.errors.email ? (
-                        <span></span>
-                      ) : (
-                        <span className="absolute -bottom-6">
-                          <Message variant="error">
-                            {errors.errors.email}
-                          </Message>
-                        </span>
-                      )} */}
                     </div>
                   </div>
                 </div>
@@ -249,15 +221,7 @@ const MyAccount = (props) => {
                             </Message>
                           </span>
                         )}
-                      {/* {!errors.errors || !errors.errors.password ? (
-                        <span></span>
-                      ) : (
-                        <span className="absolute -bottom-6">
-                          <Message variant="error">
-                            {errors.errors.password}
-                          </Message>
-                        </span>
-                      )} */}
+
                       <i
                         className="absolute bottom-3.5 right-4 hover:cursor-pointer"
                         onClick={() =>
@@ -300,15 +264,7 @@ const MyAccount = (props) => {
                             </Message>
                           </span>
                         )}
-                      {/* {!errors.errors || !errors.errors.password2 ? (
-                        <span></span>
-                      ) : (
-                        <span className="absolute -bottom-6">
-                          <Message variant="error">
-                            {errors.errors.password2}
-                          </Message>
-                        </span>
-                      )} */}
+
                       <i
                         className="absolute bottom-3.5 right-4 hover:cursor-pointer"
                         onClick={() =>
@@ -330,22 +286,13 @@ const MyAccount = (props) => {
                     </Message>
                   </div>
                 )}
-                {/* {!errors.errors ||
-                errors.errors.error === undefined ||
-                !errors.errors.error ? (
-                  <div></div>
-                ) : (
-                  <div className="text-center mb-6">
-                    <Message variant="error" classes="font-medium">
-                      {errors.errors.error}
-                    </Message>
-                  </div>
-                )} */}
+
                 {!_.isEmpty(messages.message) && (
                   <div className="text-center mb-6">
                     <Message variant="success">{messages.message}</Message>
                   </div>
                 )}
+
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-3 ">
                     <button

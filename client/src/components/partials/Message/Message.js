@@ -3,6 +3,7 @@ import React from "react";
 const Message = ({ variant, classes, children }) => {
   let background;
 
+  // switch to choose different bg
   switch (variant) {
     case (variant = "error"):
       background = "bg-red-300";

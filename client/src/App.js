@@ -25,10 +25,13 @@ const App = (props) => {
       const decoded = jwt_decode(token);
       const currentTime = Date.now() / 1000;
 
+      // sets token in default axios headers
       setAuthToken(token);
 
+      // sets user in state from token
       setCurrentUser(decoded);
 
+      // logout if token expired
       if (decoded.exp < currentTime) {
         logoutUser();
         window.location.href = "./login";

@@ -20,8 +20,8 @@ const Register = (props) => {
   const passwordRef = useRef();
   const password2Ref = useRef();
 
-  console.log(props);
   useEffect(() => {
+    // push to dashbord if already authenticated
     if (auth.isAuthenticated) props.history.push("/dashboard");
   }, [auth.isAuthenticated, props]);
 
@@ -36,6 +36,7 @@ const Register = (props) => {
     //eslint-disable-next-line
   }, []);
 
+  // dispatch registerUser on form submit
   const onSubmit = (e) => {
     e.preventDefault();
 

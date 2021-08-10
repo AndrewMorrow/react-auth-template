@@ -7,6 +7,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
+  // wrap with redux provider
   <Provider store={store}>
     <div className="bg-pink-200">
       <App />

@@ -13,8 +13,7 @@ const PasswordReset = (props) => {
   const { errors, messages } = state;
   const emailRef = useRef();
 
-  console.log(messages);
-
+  // dispatch passResetReq on form submit
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -31,7 +30,6 @@ const PasswordReset = (props) => {
     };
 
     dispatch(passResetReq(userData, props.history));
-    // console.log(messages.message);
   };
 
   return (
@@ -79,13 +77,6 @@ const PasswordReset = (props) => {
                         <Message variant="error">{errors.errors.email}</Message>
                       </span>
                     )}
-                  {/* {!errors.errors || !errors.errors.email ? (
-                    <span></span>
-                  ) : (
-                    <span className="absolute left-0 -bottom-6">
-                      <Message variant="error">{errors.errors.email}</Message>
-                    </span>
-                  )} */}
                 </div>
 
                 {!_.isEmpty(messages.message) && (
@@ -93,14 +84,6 @@ const PasswordReset = (props) => {
                     <Message variant="success">{messages.message}</Message>
                   </span>
                 )}
-
-                {/* {!messages.message ? (
-                  <span></span>
-                ) : (
-                  <span className="absolute left-0 -bottom-6">
-                    <Message variant="success">{messages.message}</Message>
-                  </span>
-                )} */}
 
                 <div className="mb-6">
                   <button

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import NavUserDropdown from "./NavUserDropdown/NavUserDropdown";
 
 const Navbar = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <header>
       <nav className="bg-blue-300 py-4">

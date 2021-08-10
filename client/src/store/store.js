@@ -21,6 +21,7 @@ const initialState = {
 
 const middlewares = [thunk];
 
+// setup redux store
 const store = createStore(
   reducer,
   initialState,
