@@ -23,18 +23,28 @@ const Register = (props) => {
   useEffect(() => {
     // push to dashbord if already authenticated
     if (auth.isAuthenticated) props.history.push("/dashboard");
-  }, [auth.isAuthenticated, props]);
 
-  useEffect(() => {
-    dispatch(
-      setErrors({
-        response: {
-          data: {},
-        },
-      })
-    );
-    //eslint-disable-next-line
-  }, []);
+    return () => {
+      dispatch(
+        setErrors({
+          response: {
+            data: {},
+          },
+        })
+      );
+    };
+  }, [auth.isAuthenticated, props, dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(
+  //     setErrors({
+  //       response: {
+  //         data: {},
+  //       },
+  //     })
+  //   );
+  //   //eslint-disable-next-line
+  // }, []);
 
   // dispatch registerUser on form submit
   const onSubmit = (e) => {
@@ -95,23 +105,13 @@ const Register = (props) => {
                         placeholder="John"
                       />
 
-                      {!_.isEmpty(errors.errors) &&
-                        !_.isEmpty(errors.errors.firstName) && (
-                          <span className="absolute -bottom-6">
-                            <Message variant="error">
-                              {errors.errors.firstName}
-                            </Message>
-                          </span>
-                        )}
-                      {/* {!errors.errors || !errors.errors.firstName ? (
-                        <span></span>
-                      ) : (
+                      {!_.isEmpty(errors.errors?.firstName) && (
                         <span className="absolute -bottom-6">
                           <Message variant="error">
                             {errors.errors.firstName}
                           </Message>
                         </span>
-                      )} */}
+                      )}
                     </div>
                   </div>
                   <div className="w-full sm:w-1/2 px-3 mb-7 relative">
@@ -133,24 +133,13 @@ const Register = (props) => {
                         placeholder="Smith"
                       />
 
-                      {!_.isEmpty(errors.errors) &&
-                        !_.isEmpty(errors.errors.lastName) && (
-                          <span className="absolute -bottom-6">
-                            <Message variant="error">
-                              {errors.errors.lastName}
-                            </Message>
-                          </span>
-                        )}
-
-                      {/* {!errors.errors || !errors.errors.lastName ? (
-                        <span></span>
-                      ) : (
+                      {!_.isEmpty(errors.errors?.lastName) && (
                         <span className="absolute -bottom-6">
                           <Message variant="error">
                             {errors.errors.lastName}
                           </Message>
                         </span>
-                      )} */}
+                      )}
                     </div>
                   </div>
                 </div>
@@ -174,23 +163,13 @@ const Register = (props) => {
                         placeholder="johnsmith@example.com"
                       />
 
-                      {!_.isEmpty(errors.errors) &&
-                        !_.isEmpty(errors.errors.email) && (
-                          <span className="absolute -bottom-6">
-                            <Message variant="error">
-                              {errors.errors.email}
-                            </Message>
-                          </span>
-                        )}
-                      {/* {!errors.errors || !errors.errors.email ? (
-                        <span></span>
-                      ) : (
+                      {!_.isEmpty(errors.errors?.email) && (
                         <span className="absolute -bottom-6">
                           <Message variant="error">
                             {errors.errors.email}
                           </Message>
                         </span>
-                      )} */}
+                      )}
                     </div>
                   </div>
                 </div>
@@ -217,24 +196,14 @@ const Register = (props) => {
                         placeholder="************"
                       />
 
-                      {!_.isEmpty(errors.errors) &&
-                        !_.isEmpty(errors.errors.password) && (
-                          <span className="absolute -bottom-6">
-                            <Message variant="error">
-                              {errors.errors.password}
-                            </Message>
-                          </span>
-                        )}
-
-                      {/* {!errors.errors || !errors.errors.password ? (
-                        <span></span>
-                      ) : (
+                      {!_.isEmpty(errors.errors?.password) && (
                         <span className="absolute -bottom-6">
                           <Message variant="error">
                             {errors.errors.password}
                           </Message>
                         </span>
-                      )} */}
+                      )}
+
                       <i
                         className="absolute bottom-3.5 right-4 hover:cursor-pointer"
                         onClick={() =>
@@ -270,23 +239,14 @@ const Register = (props) => {
                         placeholder="************"
                       />
 
-                      {!_.isEmpty(errors.errors) &&
-                        !_.isEmpty(errors.errors.password2) && (
-                          <span className="absolute -bottom-6">
-                            <Message variant="error">
-                              {errors.errors.password2}
-                            </Message>
-                          </span>
-                        )}
-                      {/* {!errors.errors || !errors.errors.password2 ? (
-                        <span></span>
-                      ) : (
+                      {!_.isEmpty(errors.errors?.password2) && (
                         <span className="absolute -bottom-6">
                           <Message variant="error">
                             {errors.errors.password2}
                           </Message>
                         </span>
-                      )} */}
+                      )}
+
                       <i
                         className="absolute bottom-3.5 right-4 hover:cursor-pointer"
                         onClick={() =>
@@ -300,25 +260,14 @@ const Register = (props) => {
                     </div>
                   </div>
                 </div>
-
-                {!_.isEmpty(errors.errors) && !_.isEmpty(errors.errors.error) && (
+                {!_.isEmpty(errors.errors?.error) && (
                   <div className="text-center mb-6">
                     <Message variant="error" classes="font-medium">
                       {errors.errors.error}
                     </Message>
                   </div>
                 )}
-                {/* {!errors.errors ||
-                errors.errors.error === undefined ||
-                !errors.errors.error ? (
-                  <div></div>
-                ) : (
-                  <div className="text-center mb-6">
-                    <Message variant="error" classes="font-medium">
-                      {errors.errors.error}
-                    </Message>
-                  </div>
-                )} */}
+
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5 ">
                     <button

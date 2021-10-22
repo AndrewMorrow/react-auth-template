@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { passwordReset } from "../../../store/auth/authActions";
@@ -21,6 +21,18 @@ const PasswordReset = (props) => {
 
   // pulls userId from url
   const userId = new URLSearchParams(props.location.search).get("id");
+
+  useEffect(() => {
+    return () => {
+      dispatch(
+        setErrors({
+          response: {
+            data: {},
+          },
+        })
+      );
+    };
+  }, [dispatch]);
 
   // dispatch passwordReset on form submit
   const onSubmit = (e) => {
@@ -85,14 +97,13 @@ const PasswordReset = (props) => {
                         placeholder="************"
                       />
 
-                      {!_.isEmpty(errors.errors) &&
-                        !_.isEmpty(errors.errors.password) && (
-                          <span className="absolute -bottom-6">
-                            <Message variant="error">
-                              {errors.errors.password}
-                            </Message>
-                          </span>
-                        )}
+                      {!_.isEmpty(errors.errors?.password) && (
+                        <span className="absolute -bottom-6">
+                          <Message variant="error">
+                            {errors.errors.password}
+                          </Message>
+                        </span>
+                      )}
 
                       <i
                         className="absolute bottom-3.5 right-4 hover:cursor-pointer"
@@ -128,14 +139,13 @@ const PasswordReset = (props) => {
                         placeholder="************"
                       />
 
-                      {!_.isEmpty(errors.errors) &&
-                        !_.isEmpty(errors.errors.password2) && (
-                          <span className="absolute -bottom-6">
-                            <Message variant="error">
-                              {errors.errors.password2}
-                            </Message>
-                          </span>
-                        )}
+                      {!_.isEmpty(errors.errors?.password2) && (
+                        <span className="absolute -bottom-6">
+                          <Message variant="error">
+                            {errors.errors.password2}
+                          </Message>
+                        </span>
+                      )}
 
                       <i
                         className="absolute bottom-3.5 right-4 hover:cursor-pointer"

@@ -24,31 +24,31 @@ const MyAccount = (props) => {
   const passwordRef = useRef();
   const password2Ref = useRef();
 
-  if (!_.isEmpty(currentUser)) {
-    firstNameRef.current.value = currentUser.firstName;
-    lastNameRef.current.value = currentUser.lastName;
-    emailRef.current.value = currentUser.email;
-  }
-
   useEffect(() => {
     if (!auth.isAuthenticated) props.history.push("/login");
-    getUser()
-      .then((res) => {
-        setCurrentUser(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, [auth.isAuthenticated, props]);
+    if (_.isEmpty(currentUser)) {
+      getUser()
+        .then((res) => {
+          setCurrentUser(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
 
-  useEffect(() => {
-    dispatch(
-      setErrors({
-        response: {
-          data: {},
-        },
-      })
-    );
-    //eslint-disable-next-line
-  }, []);
+    if (!_.isEmpty(currentUser)) {
+      firstNameRef.current.value = currentUser.firstName;
+      lastNameRef.current.value = currentUser.lastName;
+      emailRef.current.value = currentUser.email;
+    }
+
+    return () =>
+      dispatch(
+        setErrors({
+          response: {
+            data: {},
+          },
+        })
+      );
+  }, [auth.isAuthenticated, props, dispatch, currentUser]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -74,7 +74,7 @@ const MyAccount = (props) => {
 
   return (
     <main>
-      <div className="min-w-screen min-h-screen  flex items-center justify-center md:px-5 py-5">
+      <div className="min-w-screen min-h-screen flex items-center justify-center md:px-5 py-5">
         <div
           className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden md:mx-4"
           style={{ maxWidth: "900px" }}
@@ -120,14 +120,13 @@ const MyAccount = (props) => {
                         placeholder="John"
                       />
 
-                      {!_.isEmpty(errors.errors) &&
-                        !_.isEmpty(errors.errors.firstName) && (
-                          <span className="absolute -bottom-6">
-                            <Message variant="error">
-                              {errors.errors.firstName}
-                            </Message>
-                          </span>
-                        )}
+                      {!_.isEmpty(errors?.errors?.firstName) && (
+                        <span className="absolute -bottom-6">
+                          <Message variant="error">
+                            {errors.errors.firstName}
+                          </Message>
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div className="w-full sm:w-1/2 px-3 mb-7 relative">

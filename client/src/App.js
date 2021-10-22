@@ -43,13 +43,13 @@ const App = (props) => {
     <Router>
       <Navbar />
       <div className="container max-w-5xl xl:max-w-7xl  ">
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/passwordResetReq" component={PasswordResetReq} />
-        <Route exact path="/passwordReset" component={PasswordReset} />
-
         <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/passwordResetReq" component={PasswordResetReq} />
+          <Route exact path="/passwordReset" component={PasswordReset} />
+
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/account" component={MyAccount} />
         </Switch>

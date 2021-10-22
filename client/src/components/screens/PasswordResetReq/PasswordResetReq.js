@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { passResetReq } from "../../../store/auth/authActions";
@@ -12,6 +12,18 @@ const PasswordReset = (props) => {
   const state = useSelector((state) => state);
   const { errors, messages } = state;
   const emailRef = useRef();
+
+  useEffect(() => {
+    return () => {
+      dispatch(
+        setErrors({
+          response: {
+            data: {},
+          },
+        })
+      );
+    };
+  }, [dispatch]);
 
   // dispatch passResetReq on form submit
   const onSubmit = (e) => {
@@ -71,12 +83,11 @@ const PasswordReset = (props) => {
                     className="w-full px-8 py-2 mb-0.5 placeholder-gray-300 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
                   />
 
-                  {!_.isEmpty(errors.errors) &&
-                    !_.isEmpty(errors.errors.email) && (
-                      <span className="absolute left-0 -bottom-6">
-                        <Message variant="error">{errors.errors.email}</Message>
-                      </span>
-                    )}
+                  {!_.isEmpty(errors.errors?.email) && (
+                    <span className="absolute left-0 -bottom-6">
+                      <Message variant="error">{errors.errors.email}</Message>
+                    </span>
+                  )}
                 </div>
 
                 {!_.isEmpty(messages.message) && (

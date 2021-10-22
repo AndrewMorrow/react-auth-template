@@ -7,7 +7,7 @@ import { errorReducer } from "./error/errorReducers";
 import { messageReducer } from "./message/messageReducers";
 
 // sets up state variables and reducers to modify them
-const reducer = combineReducers({
+const reducers = combineReducers({
   // stateVariable : importedReducer
   auth: userAuthReducer,
   errors: errorReducer,
@@ -23,7 +23,7 @@ const middlewares = [thunk];
 
 // setup redux store
 const store = createStore(
-  reducer,
+  reducers,
   initialState,
   composeWithDevTools(applyMiddleware(...middlewares))
 );

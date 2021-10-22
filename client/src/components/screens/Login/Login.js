@@ -17,20 +17,29 @@ const Login = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   console.log(props);
-  useEffect(() => {
-    if (auth.isAuthenticated) props.history.push("/dashboard");
-  }, [auth.isAuthenticated, props]);
 
   useEffect(() => {
-    dispatch(
+    if (auth.isAuthenticated) props.history.push("/dashboard");
+
+    return ()=> dispatch(
       setErrors({
         response: {
           data: {},
         },
       })
     );
-    //eslint-disable-next-line
-  }, []);
+  }, [auth.isAuthenticated, props, dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(
+  //     setErrors({
+  //       response: {
+  //         data: {},
+  //       },
+  //     })
+  //   );
+  //   //eslint-disable-next-line
+  // }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -90,12 +99,11 @@ const Login = (props) => {
                     className="w-full px-8 py-2 mb-0.5 placeholder-gray-300 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
                   />
 
-                  {!_.isEmpty(errors.errors) &&
-                    !_.isEmpty(errors.errors.email) && (
-                      <span className="absolute left-0 -bottom-6">
-                        <Message variant="error">{errors.errors.email}</Message>
-                      </span>
-                    )}
+                  {!_.isEmpty(errors.errors?.email) && (
+                    <span className="absolute left-0 -bottom-6">
+                      <Message variant="error">{errors.errors.email}</Message>
+                    </span>
+                  )}
                 </div>
                 <div className="mb-6 relative my-8">
                   <div className="flex justify-between mb-2">
@@ -156,10 +164,10 @@ const Login = (props) => {
 
                 {!_.isEmpty(errors.errors) && !_.isEmpty(errors.errors.error) && (
                   <div className="text-center">
-                  <Message variant="error" classes="font-medium">
-                    {errors.errors.error}
-                  </Message>
-                </div>
+                    <Message variant="error" classes="font-medium">
+                      {errors.errors.error}
+                    </Message>
+                  </div>
                 )}
                 {/* {!errors.errors ||
                 errors.errors.error === undefined ||
