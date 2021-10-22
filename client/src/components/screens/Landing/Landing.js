@@ -3,14 +3,13 @@ import React, { useEffect } from "react";
 import _ from "lodash/core";
 import Message from "../../partials/Message/Message";
 import { setErrors } from "../../../store/error/errorActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Landing = (props) => {
   // console.log(props);
   const dispatch = useDispatch();
-  const messages = {
-    message: "This is a test message",
-  };
+  const state = useSelector((state) => state);
+  const { messages } = state;
 
   useEffect(() => {
     return () =>

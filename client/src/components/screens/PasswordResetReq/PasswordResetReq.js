@@ -84,7 +84,7 @@ const PasswordReset = (props) => {
                     className="w-full px-8 py-2 mb-0.5 placeholder-gray-300 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-300 dark:bg-gray-100 dark:placeholder-gray-500 dark:border-gray-200 dark:focus:border-indigo-500"
                   />
 
-                  {!_.isEmpty(errors.errors?.email) && (
+                  {errors?.errors?.email && (
                     <span className="absolute left-0 -bottom-6">
                       <Message variant="error">{errors.errors.email}</Message>
                     </span>
@@ -96,6 +96,18 @@ const PasswordReset = (props) => {
                     <Message variant="success">{messages.message}</Message>
                   </span>
                 )}
+
+                {errors?.errors?.error && (
+                  <span className="text-center mb-6">
+                    <Message variant="error">{errors.errors.error}</Message>
+                  </span>
+                )}
+
+                {/* {!_.isEmpty(errors.errors?.error) && (
+                  <span className="absolute left-0 -bottom-6">
+                    <Message variant="error">{errors.errors.error}</Message>
+                  </span>
+                )} */}
 
                 <div className="mb-6">
                   <button

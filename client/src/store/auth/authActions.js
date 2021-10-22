@@ -114,9 +114,17 @@ export const passResetReq = (userData, history) => (dispatch) => {
       // set response messages in state
       dispatch(setMessages(message));
 
-      history.push("/login");
+      setTimeout(() => {
+        dispatch(setMessages({}));
+        history.push("/login");
+      }, 2000);
     })
-    .catch((err) => dispatch(setErrors(err)));
+    .catch((err) => {
+      dispatch(setErrors(err));
+      setTimeout(() => {
+        dispatch(setErrors({ response: { data: {} } }));
+      }, 3000);
+    });
 };
 
 export const passwordReset = (userData, history) => (dispatch) => {
