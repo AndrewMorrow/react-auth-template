@@ -23,7 +23,9 @@ const Register = (props) => {
   useEffect(() => {
     // push to dashbord if already authenticated
     if (auth.isAuthenticated) props.history.push("/dashboard");
+  }, [auth.isAuthenticated, props, dispatch]);
 
+  useEffect(() => {
     return () => {
       dispatch(
         setErrors({
@@ -33,18 +35,8 @@ const Register = (props) => {
         })
       );
     };
-  }, [auth.isAuthenticated, props, dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(
-  //     setErrors({
-  //       response: {
-  //         data: {},
-  //       },
-  //     })
-  //   );
-  //   //eslint-disable-next-line
-  // }, []);
+    //eslint-disable-next-line
+  }, []);
 
   // dispatch registerUser on form submit
   const onSubmit = (e) => {

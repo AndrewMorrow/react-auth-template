@@ -107,7 +107,7 @@ export const passResetReq = (userData, history) => (dispatch) => {
   dispatch(setMessages({}));
 
   axios
-    .post("/api/auth/requestReset", userData)
+    .post("/api/auth/requestPasswordReset", userData)
     .then((res) => {
       const { message } = res.data;
 

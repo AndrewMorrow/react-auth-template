@@ -23,7 +23,8 @@ const PasswordReset = (props) => {
         })
       );
     };
-  }, [dispatch]);
+    // eslint-disable-next-line
+  }, []);
 
   // dispatch passResetReq on form submit
   const onSubmit = (e) => {

@@ -20,26 +20,19 @@ const Login = (props) => {
 
   useEffect(() => {
     if (auth.isAuthenticated) props.history.push("/dashboard");
-
-    return ()=> dispatch(
-      setErrors({
-        response: {
-          data: {},
-        },
-      })
-    );
   }, [auth.isAuthenticated, props, dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(
-  //     setErrors({
-  //       response: {
-  //         data: {},
-  //       },
-  //     })
-  //   );
-  //   //eslint-disable-next-line
-  // }, []);
+  useEffect(() => {
+    return () =>
+      dispatch(
+        setErrors({
+          response: {
+            data: {},
+          },
+        })
+      );
+    //eslint-disable-next-line
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();

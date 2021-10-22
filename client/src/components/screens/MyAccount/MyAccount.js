@@ -24,8 +24,18 @@ const MyAccount = (props) => {
   const passwordRef = useRef();
   const password2Ref = useRef();
 
+  if (!_.isEmpty(currentUser)) {
+    console.log("not empty");
+    firstNameRef.current.value = currentUser.firstName;
+    lastNameRef.current.value = currentUser.lastName;
+    emailRef.current.value = currentUser.email;
+  }
+
   useEffect(() => {
     if (!auth.isAuthenticated) props.history.push("/login");
+  }, [auth.isAuthenticated, props]);
+
+  useEffect(() => {
     if (_.isEmpty(currentUser)) {
       getUser()
         .then((res) => {
@@ -34,12 +44,10 @@ const MyAccount = (props) => {
         .catch((err) => console.log(err));
     }
 
-    if (!_.isEmpty(currentUser)) {
-      firstNameRef.current.value = currentUser.firstName;
-      lastNameRef.current.value = currentUser.lastName;
-      emailRef.current.value = currentUser.email;
-    }
+    // eslint-disable-next-line
+  }, [currentUser]);
 
+  useEffect(() => {
     return () =>
       dispatch(
         setErrors({
@@ -48,7 +56,8 @@ const MyAccount = (props) => {
           },
         })
       );
-  }, [auth.isAuthenticated, props, dispatch, currentUser]);
+    // eslint-disable-next-line
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -70,6 +79,7 @@ const MyAccount = (props) => {
     };
 
     dispatch(updateUser(userData, props.history));
+    setCurrentUser({});
   };
 
   return (

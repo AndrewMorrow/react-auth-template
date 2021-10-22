@@ -21,7 +21,8 @@ const Landing = (props) => {
           },
         })
       );
-  }, [dispatch]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <main className="min-h-screen">
